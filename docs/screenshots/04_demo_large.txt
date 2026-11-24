@@ -1,0 +1,162 @@
+==============================================================================
+ MINI-COURIER PLANNER - DELIVERY PLAN
+==============================================================================
+ Depot              : Depot
+ Van capacity       : 80.0 kg
+ Parcels received   : 400
+ Parcels selected   : 61
+ Total value        : 25227
+ Total weight       : 80.00 kg
+
+------------------------------------------------------------------------------
+ PHASE 2a - PRIORITISED PARCELS (merge sort, earliest deadline first)
+------------------------------------------------------------------------------
+ ID      Destination     Weight  Pri Deadline  Tier     Value
+ PKG0016 Mall           4.70 kg  P4    30 min  silver   value=482
+ PKG0148 Hospital       7.70 kg  P5    33 min  silver   value=581
+ PKG0075 Old-City       6.70 kg  P3    34 min  silver   value=381
+ PKG0174 Hospital       3.00 kg  P3    35 min  standard value=356
+ PKG0273 Station        1.10 kg  P3    38 min  standard value=356
+ PKG0124 Station        0.90 kg  P3    39 min  standard value=356
+ PKG0218 Market         4.10 kg  P3    40 min  gold     value=406
+ PKG0235 Tower-A        3.00 kg  P2    40 min  silver   value=281
+ PKG0059 Hospital       2.50 kg  P4    45 min  standard value=455
+ PKG0307 Tower-B        6.90 kg  P3    46 min  platinum value=435
+ ... 390 more parcels
+
+------------------------------------------------------------------------------
+ PHASE 2b - KNAPSACK SELECTION (0/1 DP, maximise priority value)
+------------------------------------------------------------------------------
+  [TAKE] PKG0273 Station        1.10 kg  P3    38 min  standard value=356
+  [TAKE] PKG0124 Station        0.90 kg  P3    39 min  standard value=356
+  [TAKE] PKG0135 Tower-B        0.60 kg  P3    66 min  silver   value=378
+  [TAKE] PKG0103 Airport        0.60 kg  P1    70 min  standard value=153
+  [TAKE] PKG0114 Airport        1.40 kg  P3    77 min  standard value=352
+  [TAKE] PKG0394 Old-City       1.60 kg  P5    93 min  standard value=550
+  [TAKE] PKG0179 Tower-A        1.40 kg  P4   107 min  platinum value=529
+  [TAKE] PKG0322 Airport        1.90 kg  P3   108 min  platinum value=429
+  [TAKE] PKG0088 Mall           0.90 kg  P3   123 min  silver   value=372
+  [TAKE] PKG0141 School         1.20 kg  P3   149 min  standard value=345
+  [TAKE] PKG0297 Station        1.40 kg  P4   155 min  silver   value=469
+  [TAKE] PKG0205 Market         0.50 kg  P3   164 min  silver   value=368
+  [TAKE] PKG0326 Old-City       1.10 kg  P4   170 min  gold     value=493
+  [TAKE] PKG0211 Market         1.30 kg  P3   186 min  silver   value=366
+  [TAKE] PKG0252 University     1.60 kg  P5   192 min  gold     value=590
+  [TAKE] PKG0087 Airport        1.40 kg  P3   193 min  silver   value=365
+  [TAKE] PKG0181 Mall           1.30 kg  P3   197 min  standard value=340
+  [TAKE] PKG0349 University     0.60 kg  P4   200 min  standard value=440
+  [TAKE] PKG0152 Tower-B        2.10 kg  P3   200 min  platinum value=420
+  [TAKE] PKG0134 Tower-A        1.50 kg  P3   201 min  gold     value=389
+  [TAKE] PKG0001 Airport        1.10 kg  P4   207 min  gold     value=489
+  [TAKE] PKG0083 University     1.40 kg  P4   222 min  standard value=437
+  [TAKE] PKG0198 Market         0.80 kg  P3   222 min  silver   value=362
+  [TAKE] PKG0279 Tower-B        0.80 kg  P5   227 min  standard value=537
+  [TAKE] PKG0065 School         1.80 kg  P4   228 min  gold     value=487
+  [TAKE] PKG0022 Airport        0.60 kg  P3   230 min  standard value=337
+  [TAKE] PKG0327 Industrial     1.10 kg  P5   233 min  gold     value=586
+  [TAKE] PKG0063 Old-City       1.30 kg  P4   238 min  platinum value=516
+  [TAKE] PKG0070 Old-City       1.50 kg  P4   239 min  silver   value=461
+  [TAKE] PKG0161 Tower-A        1.60 kg  P4   240 min  platinum value=516
+  [TAKE] PKG0225 Station        1.40 kg  P3   254 min  silver   value=359
+  [TAKE] PKG0025 Tower-A        1.60 kg  P5   264 min  gold     value=583
+  [TAKE] PKG0223 Industrial     1.10 kg  P4   284 min  platinum value=511
+  [TAKE] PKG0366 School         1.70 kg  P4   288 min  standard value=431
+  [TAKE] PKG0137 Mall           1.80 kg  P4   294 min  silver   value=455
+  [TAKE] PKG0054 Mall           1.60 kg  P4   307 min  standard value=429
+  [TAKE] PKG0186 Industrial     0.60 kg  P3   311 min  silver   value=353
+  [TAKE] PKG0015 Tower-A        1.10 kg  P2   312 min  gold     value=278
+  [TAKE] PKG0378 Tower-A        0.60 kg  P3   334 min  platinum value=406
+  [TAKE] PKG0182 University     0.70 kg  P2   361 min  gold     value=273
+  [TAKE] PKG0316 University     1.40 kg  P5   362 min  silver   value=548
+  [TAKE] PKG0035 Industrial     1.40 kg  P4   374 min  silver   value=447
+  [TAKE] PKG0305 Airport        1.90 kg  P4   398 min  standard value=420
+  [TAKE] PKG0241 Mall           1.80 kg  P3   436 min  platinum value=396
+  [TAKE] PKG0133 Station        1.80 kg  P4   440 min  platinum value=496
+  [TAKE] PKG0064 Tower-A        1.40 kg  P3   454 min  silver   value=339
+  [TAKE] PKG0282 School         0.90 kg  P3   458 min  standard value=314
+  [TAKE] PKG0285 Tower-B        2.00 kg  P4   462 min  platinum value=493
+  [TAKE] PKG0247 Market         2.20 kg  P4   469 min  gold     value=463
+  [TAKE] PKG0086 Station        1.20 kg  P4   471 min  silver   value=437
+  [TAKE] PKG0112 Old-City       1.90 kg  P4   492 min  standard value=410
+  [TAKE] PKG0344 Tower-A        1.40 kg  P3   496 min  silver   value=335
+  [TAKE] PKG0164 Hospital       0.80 kg  P3   502 min  standard value=309
+  [TAKE] PKG0104 School         1.00 kg  P2   510 min  silver   value=234
+  [TAKE] PKG0292 School         1.50 kg  P4   517 min  platinum value=488
+  [TAKE] PKG0139 School         1.50 kg  P3   527 min  silver   value=332
+  [TAKE] PKG0189 Hospital       1.00 kg  P2   530 min  gold     value=257
+  [TAKE] PKG0119 Tower-B        1.90 kg  P3   538 min  platinum value=386
+  [TAKE] PKG0201 Tower-A        2.20 kg  P5   542 min  silver   value=530
+  [TAKE] PKG0331 Old-City       1.30 kg  P3   573 min  silver   value=327
+  [TAKE] PKG0062 Airport        0.90 kg  P4   598 min  standard value=400
+  [SKIP] PKG0016 Mall           4.70 kg  P4    30 min  silver   value=482
+  [SKIP] PKG0148 Hospital       7.70 kg  P5    33 min  silver   value=581
+  [SKIP] PKG0075 Old-City       6.70 kg  P3    34 min  silver   value=381
+  [SKIP] PKG0174 Hospital       3.00 kg  P3    35 min  standard value=356
+  [SKIP] PKG0218 Market         4.10 kg  P3    40 min  gold     value=406
+  ... 334 more parcels skipped
+
+ Box packing plan (first-fit decreasing, box limit 5.0 kg):
+   Box 1:  5.00 kg -> PKG0247, PKG0201, PKG0135
+   Box 2:  5.00 kg -> PKG0152, PKG0285, PKG0124
+   Box 3:  5.00 kg -> PKG0322, PKG0305, PKG0141
+   Box 4:  5.00 kg -> PKG0112, PKG0119, PKG0086
+   Box 5:  5.00 kg -> PKG0065, PKG0137, PKG0114
+   Box 6:  5.00 kg -> PKG0241, PKG0133, PKG0179
+   Box 7:  4.90 kg -> PKG0366, PKG0394, PKG0252
+   Box 8:  4.80 kg -> PKG0161, PKG0025, PKG0054
+   Box 9:  5.00 kg -> PKG0134, PKG0070, PKG0292, PKG0205
+   Box 10:  5.00 kg -> PKG0139, PKG0297, PKG0087, PKG0182
+   Box 11:  5.00 kg -> PKG0083, PKG0225, PKG0316, PKG0198
+   Box 12:  5.00 kg -> PKG0035, PKG0064, PKG0344, PKG0279
+   Box 13:  5.00 kg -> PKG0211, PKG0181, PKG0063, PKG0273
+   Box 14:  4.60 kg -> PKG0331, PKG0326, PKG0001, PKG0327
+   Box 15:  5.00 kg -> PKG0223, PKG0015, PKG0104, PKG0189, PKG0164
+   Box 16:  4.50 kg -> PKG0088, PKG0282, PKG0062, PKG0103, PKG0349, PKG0022
+   Box 17:  1.20 kg -> PKG0186, PKG0378
+
+------------------------------------------------------------------------------
+ PHASE 3 - DELIVERY ROUTE (Dijkstra distances + nearest neighbour + 2-opt)
+------------------------------------------------------------------------------
+  Dijkstra shortest paths from the depot:
+  Stop             Distance   Path
+  School             7.29 km   Depot -> School
+  Old-City           8.22 km   Depot -> Old-City
+  Hospital           7.53 km   Depot -> Hospital
+  Tower-A           10.17 km   Depot -> Tower-A
+  Market            10.40 km   Depot -> Market
+  Industrial        14.04 km   Depot -> Industrial
+  Tower-B            7.60 km   Depot -> Tower-B
+  University        10.62 km   Depot -> University
+  Airport           15.47 km   Depot -> Airport
+  Station           10.25 km   Depot -> Station
+  Mall              10.17 km   Depot -> Mall
+
+  Route: Depot -> School -> Old-City -> Hospital -> Tower-A -> Market -> Industrial -> Tower-B -> University -> Airport -> Station -> Mall -> Depot
+
+  Leg                          Distance (km)
+  Depot -> School                       7.29
+  School -> Old-City                    3.12
+  Old-City -> Hospital                  6.73
+  Hospital -> Tower-A                   6.25
+  Tower-A -> Market                     7.60
+  Market -> Industrial                  6.37
+  Industrial -> Tower-B                 7.63
+  Tower-B -> University                 6.53
+  University -> Airport                 6.37
+  Airport -> Station                    5.38
+  Station -> Mall                       8.34
+  Mall -> Depot                        10.17
+  TOTAL                                81.79
+
+  Nearest-neighbour tour : 84.06 km
+  After 2-opt            : 81.79 km
+  Improvement            : 2.7%
+
+------------------------------------------------------------------------------
+ RUNTIME OF MAJOR STEPS
+------------------------------------------------------------------------------
+  sort             2.884 ms
+  knapsack       535.431 ms
+  route            0.834 ms
+  TOTAL          539.149 ms
+==============================================================================

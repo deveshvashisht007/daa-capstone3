@@ -1,0 +1,58 @@
+component,variant,n,runtime_ms
+sorting,Insertion Sort,50,0.1333
+sorting,Insertion Sort,100,0.5496
+sorting,Insertion Sort,200,2.0691
+sorting,Insertion Sort,400,9.2981
+sorting,Insertion Sort,800,37.0522
+sorting,Merge Sort,50,0.1292
+sorting,Merge Sort,100,0.2876
+sorting,Merge Sort,200,0.6907
+sorting,Merge Sort,400,1.5164
+sorting,Merge Sort,800,3.5091
+sorting,Merge Sort,1600,7.9101
+sorting,Quick Sort,50,0.0872
+sorting,Quick Sort,100,0.2119
+sorting,Quick Sort,200,0.4518
+sorting,Quick Sort,400,1.0681
+sorting,Quick Sort,800,2.8695
+sorting,Quick Sort,1600,5.3668
+sorting,Heap Sort,50,0.1711
+sorting,Heap Sort,100,0.4197
+sorting,Heap Sort,200,1.1581
+sorting,Heap Sort,400,2.2342
+sorting,Heap Sort,800,5.2042
+sorting,Heap Sort,1600,11.8679
+sorting,Timsort (built-in),50,0.0117
+sorting,Timsort (built-in),100,0.0263
+sorting,Timsort (built-in),200,0.0558
+sorting,Timsort (built-in),400,0.1308
+sorting,Timsort (built-in),800,0.3007
+sorting,Timsort (built-in),1600,0.6922
+knapsack,DP (O(nW)),4,1.0103
+knapsack,DP (O(nW)),8,1.9334
+knapsack,DP (O(nW)),12,3.5553
+knapsack,DP (O(nW)),16,3.9548
+knapsack,DP (O(nW)),18,4.4833
+knapsack,Brute force (O(2^n)),4,0.0618
+knapsack,Brute force (O(2^n)),8,0.8871
+knapsack,Brute force (O(2^n)),12,14.1555
+knapsack,Brute force (O(2^n)),16,115.8061
+knapsack,Brute force (O(2^n)),18,556.1744
+dijkstra,Dijkstra (one source),10,0.0154
+dijkstra,Dijkstra (one source),20,0.0410
+dijkstra,Dijkstra (one source),40,0.1511
+dijkstra,Dijkstra (one source),80,0.5137
+dijkstra,Dijkstra (one source),160,2.1071
+dijkstra,Dijkstra (one source),320,12.2994
+tsp,NN + 2-opt,5,0.0363
+tsp,NN + 2-opt,8,0.0578
+tsp,NN + 2-opt,12,0.0687
+tsp,NN + 2-opt,16,0.1468
+tsp,NN + 2-opt,20,0.2303
+tsp,NN + 2-opt,25,0.4106
+tsp,NN + 2-opt,30,0.4742
+
+dataset,parcels,selected,stops,sort_ms,knapsack_ms,route_ms,total_ms,route_km,value
+small (10 parcels),10,6,7,0.090,4.272,0.590,4.981,63.06,2745
+medium (60 parcels),60,20,10,0.294,41.854,0.612,42.795,73.01,8260
+large (400 parcels),400,61,12,1.652,667.254,2.051,670.995,81.79,25227

@@ -1,0 +1,81 @@
+==============================================================================
+ MINI-COURIER PLANNER - DELIVERY PLAN
+==============================================================================
+ Depot              : Depot
+ Van capacity       : 20.0 kg
+ Parcels received   : 10
+ Parcels selected   : 6
+ Total value        : 2745
+ Total weight       : 19.50 kg
+
+------------------------------------------------------------------------------
+ PHASE 2a - PRIORITISED PARCELS (merge sort, earliest deadline first)
+------------------------------------------------------------------------------
+ ID      Destination     Weight  Pri Deadline  Tier     Value
+ PKG0007 Old-City       2.00 kg  P3    30 min  standard value=357
+ PKG0001 Hospital       4.00 kg  P5    45 min  platinum value=635
+ PKG0002 Market         2.50 kg  P4    60 min  gold     value=504
+ PKG0005 Mall           5.00 kg  P4    75 min  gold     value=502
+ PKG0003 Station        3.00 kg  P3    90 min  silver   value=376
+ PKG0004 University     1.50 kg  P2   120 min  standard value=248
+ PKG0006 Airport        6.50 kg  P5   150 min  platinum value=625
+ PKG0010 Industrial     7.00 kg  P3   180 min  gold     value=392
+ PKG0008 School         3.50 kg  P2   210 min  silver   value=264
+ PKG0009 Tower-A        4.50 kg  P1   300 min  standard value=130
+
+------------------------------------------------------------------------------
+ PHASE 2b - KNAPSACK SELECTION (0/1 DP, maximise priority value)
+------------------------------------------------------------------------------
+  [TAKE] PKG0007 Old-City       2.00 kg  P3    30 min  standard value=357
+  [TAKE] PKG0001 Hospital       4.00 kg  P5    45 min  platinum value=635
+  [TAKE] PKG0002 Market         2.50 kg  P4    60 min  gold     value=504
+  [TAKE] PKG0003 Station        3.00 kg  P3    90 min  silver   value=376
+  [TAKE] PKG0004 University     1.50 kg  P2   120 min  standard value=248
+  [TAKE] PKG0006 Airport        6.50 kg  P5   150 min  platinum value=625
+  [SKIP] PKG0005 Mall           5.00 kg  P4    75 min  gold     value=502
+  [SKIP] PKG0010 Industrial     7.00 kg  P3   180 min  gold     value=392
+  [SKIP] PKG0008 School         3.50 kg  P2   210 min  silver   value=264
+  [SKIP] PKG0009 Tower-A        4.50 kg  P1   300 min  standard value=130
+
+ Box packing plan (first-fit decreasing, box limit 5.0 kg):
+   Box 1:  6.50 kg -> PKG0006  (oversized parcel)
+   Box 2:  4.00 kg -> PKG0001
+   Box 3:  5.00 kg -> PKG0003, PKG0007
+   Box 4:  4.00 kg -> PKG0002, PKG0004
+
+------------------------------------------------------------------------------
+ PHASE 3 - DELIVERY ROUTE (Dijkstra distances + nearest neighbour + 2-opt)
+------------------------------------------------------------------------------
+  Dijkstra shortest paths from the depot:
+  Stop             Distance   Path
+  Station           10.25 km   Depot -> Station
+  Airport           15.47 km   Depot -> Airport
+  University        10.62 km   Depot -> University
+  Market            10.40 km   Depot -> Market
+  Hospital           7.53 km   Depot -> Hospital
+  Old-City           8.22 km   Depot -> Old-City
+
+  Route: Depot -> Station -> Airport -> University -> Market -> Hospital -> Old-City -> Depot
+
+  Leg                          Distance (km)
+  Depot -> Station                     10.25
+  Station -> Airport                    5.38
+  Airport -> University                 6.37
+  University -> Market                 14.25
+  Market -> Hospital                   11.86
+  Hospital -> Old-City                  6.73
+  Old-City -> Depot                     8.22
+  TOTAL                                63.06
+
+  Nearest-neighbour tour : 72.00 km
+  After 2-opt            : 63.06 km
+  Improvement            : 12.4%
+
+------------------------------------------------------------------------------
+ RUNTIME OF MAJOR STEPS
+------------------------------------------------------------------------------
+  sort             0.060 ms
+  knapsack         2.712 ms
+  route            0.455 ms
+  TOTAL            3.227 ms
+==============================================================================

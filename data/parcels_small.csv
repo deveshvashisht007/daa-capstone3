@@ -1,0 +1,11 @@
+parcel_id,destination,weight_kg,priority,deadline_min,customer_tier
+PKG0001,Hospital,4.0,5,45,platinum
+PKG0002,Market,2.5,4,60,gold
+PKG0003,Station,3.0,3,90,silver
+PKG0004,University,1.5,2,120,standard
+PKG0005,Mall,5.0,4,75,gold
+PKG0006,Airport,6.5,5,150,platinum
+PKG0007,Old-City,2.0,3,30,standard
+PKG0008,School,3.5,2,210,silver
+PKG0009,Tower-A,4.5,1,300,standard
+PKG0010,Industrial,7.0,3,180,gold

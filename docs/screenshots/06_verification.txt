@@ -1,0 +1,21 @@
+==============================================================================
+ CORRECTNESS VERIFICATION
+==============================================================================
+ [PASS] Insertion Sort matches sorted()                      n=120
+ [PASS] Merge Sort matches sorted()                          n=120
+ [PASS] Quick Sort matches sorted()                          n=120
+ [PASS] Heap Sort matches sorted()                           n=120
+ [PASS] Timsort matches sorted()                             n=120
+ [PASS] Merge sort keeps input order for equal keys          stability
+ [PASS] Knapsack DP == brute force (n=10, cap=12.0 kg)       2826 vs 2826
+ [PASS] Knapsack DP == brute force (n=14, cap=18.0 kg)       3346 vs 3346
+ [PASS] Knapsack DP == brute force (n=16, cap=9.5 kg)        2106 vs 2106
+ [PASS] 1-D DP value == 2-D DP value                         4435
+ [PASS] Selected weight respects capacity                    14.40 <= 15.0 kg
+ [PASS] Dijkstra finds Depot->D = 10 via B,A,C               ['Depot', 'B', 'A', 'C', 'D'] = 10.0
+ [PASS] TSP tour visits every stop exactly once              Depot -> A -> B -> D -> C -> Depot
+ [PASS] 2-opt length <= NN length                            24.00 -> 24.00 km
+ [PASS] Tour length recomputation is consistent              delta
+------------------------------------------------------------------------------
+ 15/15 checks passed
+==============================================================================

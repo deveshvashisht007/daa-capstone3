@@ -1,0 +1,111 @@
+==============================================================================
+ MINI-COURIER PLANNER - DELIVERY PLAN
+==============================================================================
+ Depot              : Depot
+ Van capacity       : 40.0 kg
+ Parcels received   : 60
+ Parcels selected   : 20
+ Total value        : 8260
+ Total weight       : 39.90 kg
+
+------------------------------------------------------------------------------
+ PHASE 2a - PRIORITISED PARCELS (merge sort, earliest deadline first)
+------------------------------------------------------------------------------
+ ID      Destination     Weight  Pri Deadline  Tier     Value
+ PKG0048 Airport        1.70 kg  P2    30 min  gold     value=307
+ PKG0036 University     5.60 kg  P2    32 min  standard value=256
+ PKG0011 School         0.80 kg  P2    49 min  silver   value=280
+ PKG0045 Station        0.90 kg  P3    56 min  silver   value=379
+ PKG0028 Hospital       5.10 kg  P4    60 min  gold     value=504
+ PKG0023 Airport        6.90 kg  P3    76 min  gold     value=402
+ PKG0038 University     4.70 kg  P3    81 min  silver   value=376
+ PKG0024 Old-City       4.60 kg  P5   105 min  standard value=549
+ PKG0030 Station        2.60 kg  P2   136 min  platinum value=326
+ PKG0043 Industrial     2.90 kg  P1   154 min  standard value=144
+ PKG0016 University     7.00 kg  P4   165 min  silver   value=468
+ PKG0034 Industrial     7.00 kg  P4   166 min  standard value=443
+ ... 48 more parcels
+
+------------------------------------------------------------------------------
+ PHASE 2b - KNAPSACK SELECTION (0/1 DP, maximise priority value)
+------------------------------------------------------------------------------
+  [TAKE] PKG0048 Airport        1.70 kg  P2    30 min  gold     value=307
+  [TAKE] PKG0011 School         0.80 kg  P2    49 min  silver   value=280
+  [TAKE] PKG0045 Station        0.90 kg  P3    56 min  silver   value=379
+  [TAKE] PKG0046 School         1.40 kg  P3   170 min  standard value=343
+  [TAKE] PKG0001 University     1.90 kg  P3   235 min  platinum value=416
+  [TAKE] PKG0025 School         0.90 kg  P2   245 min  platinum value=315
+  [TAKE] PKG0037 Airport        3.60 kg  P5   249 min  gold     value=585
+  [TAKE] PKG0013 Station        3.00 kg  P4   266 min  standard value=433
+  [TAKE] PKG0039 Tower-A        0.60 kg  P3   291 min  platinum value=410
+  [TAKE] PKG0056 Mall           3.40 kg  P4   299 min  silver   value=455
+  [TAKE] PKG0052 Old-City       1.30 kg  P3   318 min  silver   value=353
+  [TAKE] PKG0041 Hospital       1.80 kg  P4   344 min  silver   value=450
+  [TAKE] PKG0009 Tower-B        3.00 kg  P4   363 min  silver   value=448
+  [TAKE] PKG0015 Old-City       1.60 kg  P3   375 min  silver   value=347
+  [TAKE] PKG0049 Station        2.00 kg  P3   446 min  silver   value=340
+  [TAKE] PKG0012 Airport        2.90 kg  P5   461 min  gold     value=563
+  [TAKE] PKG0040 Hospital       2.20 kg  P5   471 min  standard value=512
+  [TAKE] PKG0042 University     1.70 kg  P4   474 min  silver   value=437
+  [TAKE] PKG0044 Tower-A        3.70 kg  P5   547 min  platinum value=585
+  [TAKE] PKG0057 Airport        1.50 kg  P3   580 min  standard value=302
+  [SKIP] PKG0036 University     5.60 kg  P2    32 min  standard value=256
+  [SKIP] PKG0028 Hospital       5.10 kg  P4    60 min  gold     value=504
+  [SKIP] PKG0023 Airport        6.90 kg  P3    76 min  gold     value=402
+  [SKIP] PKG0038 University     4.70 kg  P3    81 min  silver   value=376
+  [SKIP] PKG0024 Old-City       4.60 kg  P5   105 min  standard value=549
+  ... 35 more parcels skipped
+
+ Box packing plan (first-fit decreasing, box limit 5.0 kg):
+   Box 1:  5.00 kg -> PKG0044, PKG0052
+   Box 2:  5.00 kg -> PKG0037, PKG0046
+   Box 3:  5.00 kg -> PKG0056, PKG0015
+   Box 4:  5.00 kg -> PKG0013, PKG0049
+   Box 5:  4.90 kg -> PKG0009, PKG0001
+   Box 6:  4.70 kg -> PKG0012, PKG0041
+   Box 7:  4.80 kg -> PKG0040, PKG0048, PKG0045
+   Box 8:  4.90 kg -> PKG0042, PKG0057, PKG0025, PKG0011
+   Box 9:  0.60 kg -> PKG0039
+
+------------------------------------------------------------------------------
+ PHASE 3 - DELIVERY ROUTE (Dijkstra distances + nearest neighbour + 2-opt)
+------------------------------------------------------------------------------
+  Dijkstra shortest paths from the depot:
+  Stop             Distance   Path
+  School             7.29 km   Depot -> School
+  Old-City           8.22 km   Depot -> Old-City
+  Hospital           7.53 km   Depot -> Hospital
+  Tower-A           10.17 km   Depot -> Tower-A
+  Tower-B            7.60 km   Depot -> Tower-B
+  University        10.62 km   Depot -> University
+  Airport           15.47 km   Depot -> Airport
+  Station           10.25 km   Depot -> Station
+  Mall              10.17 km   Depot -> Mall
+
+  Route: Depot -> School -> Old-City -> Hospital -> Tower-A -> Tower-B -> University -> Airport -> Station -> Mall -> Depot
+
+  Leg                          Distance (km)
+  Depot -> School                       7.29
+  School -> Old-City                    3.12
+  Old-City -> Hospital                  6.73
+  Hospital -> Tower-A                   6.25
+  Tower-A -> Tower-B                   12.82
+  Tower-B -> University                 6.53
+  University -> Airport                 6.37
+  Airport -> Station                    5.38
+  Station -> Mall                       8.34
+  Mall -> Depot                        10.17
+  TOTAL                                73.01
+
+  Nearest-neighbour tour : 75.28 km
+  After 2-opt            : 73.01 km
+  Improvement            : 3.0%
+
+------------------------------------------------------------------------------
+ RUNTIME OF MAJOR STEPS
+------------------------------------------------------------------------------
+  sort             0.192 ms
+  knapsack        42.335 ms
+  route            0.609 ms
+  TOTAL           43.137 ms
+==============================================================================
